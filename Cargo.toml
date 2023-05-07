@@ -2,7 +2,32 @@
 name = "cintd"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
+default-run = "main"
 [dependencies]
+tokio = { version = "1", features = [
+  "time",
+  "rt",
+  "sync",
+  "macros",
+  "rt-multi-thread",
+] }
+cron = "0.12"
+chrono = { version = "0.4", default-features = false }
+uuid = { version = "1", features = ["v4"] }
+prost = { version = "0.11", optional = true }
+tracing = "0.1"
+
+# Utilities for implementing and composing `tracing` subscribers. 
+tracing-subscriber = "0.3.17"
+anyhow = "1.0"
+
+# Web framework that focuses on ergonomics and modularity
+axum = "0.6.18"
+
+# Job Scheduler
+tokio-cron-scheduler = { version = "*", features = ["signal"] }
+
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8" }
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8" }
+
+serde = "1.0.162"
